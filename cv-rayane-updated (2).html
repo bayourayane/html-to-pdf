@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Rayane Bayou</title>
+    <style>
+        /* Variables de couleurs */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* En-tête du CV */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info {
+            flex: 3;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid var(--secondary-color);
+            color: var(--primary-color);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Disposition principale */
+        .main-content {
+            display: flex;
+        }
+
+        .left-column {
+            flex: 2.5;
+            padding: 30px;
+        }
+
+        .right-column {
+            flex: 1.5;
+            background-color: var(--light-bg);
+            padding: 30px;
+        }
+
+        /* Sections communes */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+
+        /* Timeline pour l'expérience et la formation */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            left: 0;
+            top: 5px;
+        }
+
+        .timeline-item:after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: calc(100% + 10px);
+            background-color: var(--secondary-color);
+            left: 7px;
+            top: 5px;
+            opacity: 0.5;
+        }
+
+        .timeline-item:last-child:after {
+            display: none;
+        }
+
+        .date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .job-company, .school {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .job-role, .degree {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        /* Compétences */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-pill {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Barres de progression pour les compétences techniques */
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        /* Qualités personnelles */
+        .qualities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .quality-item {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        /* Langues */
+        .language-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .language-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+        }
+
+        .dot.filled {
+            background-color: var(--secondary-color);
+        }
+
+        /* Projets significatifs */
+        .project {
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Centres d'intérêt */
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Objectif professionnel */
+        .objective {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .objective-title {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border-bottom: none;
+        }
+
+        /* Style pour les puces */
+        ul {
+            list-style-position: inside;
+            margin-left: 15px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête avec informations personnelles -->
+        <header>
+            <div class="profile-info">
+                <h1>RAYANE BAYOU</h1>
+                <div class="job-title">Étudiant en Techniques de l'informatique avec expérience en réseaux</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        194 rue Brooks, Sherbrooke (QC) J1H 4N8
+                    </div>
+                    <div class="contact-item">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                        </svg>
+                        873 878-1190
+                    </div>
+                    <div class="contact-item">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                        </svg>
+                        bayourayane75@gmail.com
+                    </div>
+                </div>
+            </div>
+            <div class="profile-pic">RB</div>
+        </header>
+
+        <div class="main-content">
+            <!-- Colonne principale -->
+            <div class="left-column">
+                <!-- Objectif professionnel -->
+                <div class="objective">
+                    <h3 class="objective-title">OBJECTIF PROFESSIONNEL</h3>
+                    <p>Aspirant à une carrière en génie informatique avec une forte orientation réseau et sécurité, je vise à exploiter mes compétences en administration système, gestion de réseaux et analyse de données. Mon objectif est de contribuer significativement à des projets innovants tout en perfectionnant mes compétences techniques au sein d'une équipe dynamique. Passionné par l'intelligence artificielle, j'envisage également d'approfondir ce domaine dans mes futures études.</p>
+                </div>
+
+                <!-- Expérience professionnelle -->
+                <div class="section">
+                    <h2 class="section-title">EXPÉRIENCE PROFESSIONNELLE</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2020 (6 mois)</div>
+                        <div class="job-company">Star Brands</div>
+                        <div class="job-role">Stage en administration réseau</div>
+                        <ul>
+                            <li>Administration du réseau local et maintenance des systèmes</li>
+                            <li>Configuration et déploiement de solutions informatiques</li>
+                            <li>Support technique aux utilisateurs (50+ employés)</li>
+                            <li>Mise en place de procédures de sécurité informatique</li>
+                            <li>Application pratique des connaissances acquises en gestion des réseaux</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2020 - 2022</div>
+                        <div class="job-company">Ooredoo / Wavescall</div>
+                        <div class="job-role">Service client à distance</div>
+                        <ul>
+                            <li>Résolution de problèmes techniques de premier niveau</li>
+                            <li>Gestion de la relation client et documentation des interventions</li>
+                            <li>Support client pour un opérateur téléphonique multinational</li>
+                            <li>Utilisation d'outils de suivi client et de communication à distance</li>
+                            <li>Excellence en communication client avec approche pédagogique et empathique</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2019 - 2020</div>
+                        <div class="job-company">ABEPACK Constructeurs Packaging Italiens</div>
+                        <div class="job-role">Commercial</div>
+                        <ul>
+                            <li>Gestion de portefeuille clients et analyse des besoins</li>
+                            <li>Élaboration de solutions techniques personnalisées</li>
+                            <li>Suivi de projets et relation client</li>
+                            <li>Coordination entre les équipes techniques et les clients</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Formation -->
+                <div class="section">
+                    <h2 class="section-title">FORMATION</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2024 - En cours</div>
+                        <div class="school">Cégep de Sherbrooke</div>
+                        <div class="degree">DEC en Techniques de l'informatique</div>
+                        <ul>
+                            <li>Formation complète en développement logiciel et administration système</li>
+                            <li>Cours avancés en programmation et architecture informatique</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2021 - 2022</div>
+                        <div class="school">École Supérieure de Génie Informatique Paris / InSim Alger</div>
+                        <div class="degree">Bachelor en cybersécurité</div>
+                        <ul>
+                            <li>Élaboration d'une politique de sécurité informatique complète pour une entreprise simulée</li>
+                            <li>Mise en place de protocoles de sécurité pour prévenir les attaques potentielles</li>
+                            <li>Étude des vulnérabilités des systèmes d'information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="date">2019 - 2022</div>
+                        <div class="school">Cégep de Sherbrooke / InSim Alger</div>
+                        <div class="degree">AEC Gestion de Réseaux Informatiques</div>
+                        <ul>
+                            <li>Conception et mise en place d'un réseau informatique pour améliorer l'efficacité des communications</li>
+                            <li>Implémentation de mesures de sécurité avancées</li>
+                            <li>Administration de serveurs Windows et Linux</li>
+                            <li>Configuration d'équipements réseau Cisco</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="date">Janvier 2020</div>
+                        <div class="school">Cégep de Sherbrooke / InSim Alger</div>
+                        <div class="degree">Certification Cisco CCNA Routing and Switching</div>
+                        <ul>
+                            <li>Maîtrise des protocoles réseau fondamentaux et avancés</li>
+                            <li>Configuration d'équipements réseau Cisco (routeurs, commutateurs)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Projets significatifs -->
+                <div class="section">
+                    <h2 class="section-title">PROJETS SIGNIFICATIFS</h2>
+                    
+                    <div class="project">
+                        <div class="project-title">Projet de sécurisation réseau entreprise</div>
+                        <ul>
+                            <li>Analyse des vulnérabilités et mise en place de solutions</li>
+                            <li>Implémentation de politiques de sécurité</li>
+                            <li>Documentation et formation des utilisateurs</li>
+                            <li>Mise en place d'un système de surveillance réseau</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project">
+                        <div class="project-title">Infrastructure réseau sécurisée</div>
+                        <ul>
+                            <li>Conception et déploiement d'une architecture réseau complète</li>
+                            <li>Configuration des équipements de sécurité</li>
+                            <li>Tests de pénétration et optimisation</li>
+                            <li>Implémentation de VLAN et segmentation réseau</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project">
+                        <div class="project-title">Mise en place d'environnement virtualisé</div>
+                        <ul>
+                            <li>Configuration de serveurs virtuels sous VMware</li>
+                            <li>Déploiement de solutions haute disponibilité</li>
+                            <li>Automatisation de tâches d'administration système</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne de droite avec compétences et informations complémentaires -->
+            <div class="right-column">
+                <!-- Compétences techniques -->
+                <div class="section">
+                    <h2 class="section-title">COMPÉTENCES TECHNIQUES</h2>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Réseaux</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Administration système</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Support Technique</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Systèmes d'exploitation</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Virtualisation</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connaissances informatiques -->
+                <div class="section">
+                    <h2 class="section-title">CONNAISSANCES INFORMATIQUES</h2>
+                    <div class="skills-list">
+                        <div class="skill-pill">Windows Server 2022</div>
+                        <div class="skill-pill">Microsoft Exchange</div>
+                        <div class="skill-pill">Virtualisation VMware</div>
+                        <div class="skill-pill">Office 365</div>
+                        <div class="skill-pill">Linux Debian</div>
+                        <div class="skill-pill">Windows 7/8/10/11</div>
+                        <div class="skill-pill">Active Directory</div>
+                        <div class="skill-pill">Git & GitHub</div>
+                        <div class="skill-pill">VS Code</div>
+                        <div class="skill-pill">PyCharm</div>
+                        <div class="skill-pill">Mac OS</div>
+                        <div class="skill-pill">Firewall & VPN</div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="section">
+                    <h2 class="section-title">CERTIFICATIONS</h2>
+                    <div class="skills-list">
+                        <div class="skill-pill">CCNA Routing and Switching</div>
+                        <div class="skill-pill">CCNAv7</div>
+                    </div>
+                </div>
+
+                <!-- Qualités personnelles -->
+                <div class="section">
+                    <h2 class="section-title">QUALITÉS PERSONNELLES</h2>
+                    <div class="qualities-list">
+                        <div class="quality-item">Adaptabilité</div>
+                        <div class="quality-item">Respect</div>
+                        <div class="quality-item">Minutie</div>
+                        <div class="quality-item">Passion</div>
+                        <div class="quality-item">Autonomie</div>
+                        <div class="quality-item">Résolution de problèmes</div>
+                    </div>
+                </div>
+
+                <!-- Langues -->
+                <div class="section">
+                    <h2 class="section-title">LANGUES</h2>
+                    <div class="language-item">
+                        <span>Français</span>
+                        <div class="language-dots">
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                        </div>
+                    </div>
+                    <div class="language-item">
+                        <span>Anglais</span>
+                        <div class="language-dots">
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <div class="language-item">
+                        <span>Arabe</span>
+                        <div class="language-dots">
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                            <span class="dot filled"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Centres d'intérêt -->
+                <div class="section">
+                    <h2 class="section-title">CENTRES D'INTÉRÊT</h2>
+                    <ul>
+                        <li>Veille technologique en cybersécurité</li>
+                        <li>Participation à des forums techniques</li>
+                        <li>Projets open source</li>
+                        <li>Intelligence artificielle</li>
+                        <li>Infrastructure as Code (IaC)</li>
+                        <li>Automatisation des processus IT</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
